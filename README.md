@@ -6,8 +6,6 @@ More information on the software is at https://librenews.io
 
 Currently in beta mode
 
-Docker image is located at https://hub.docker.com/r/nonbinary/librenews/
-
 Usage:
 
 * Start image, preferrably setting a volume at /code.  
@@ -22,6 +20,7 @@ API keys can be set using the following environment variables:
     TWITTER_CONSUMER_SECRET
     VAPID_PRIVATE_KEY
     VAPID_PUBLIC_KEY
+
 
 Twitter API keys needs to be fetched from https://apps.twitter.com   
 Vapid keys needs to be created, but information on that process needs to be found using search engines etc.
