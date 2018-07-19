@@ -4,31 +4,27 @@ Unofficial server image for Librenews app - Live breaking news notifications. Se
 
 More information on the software is at https://librenews.io
 
-Currently in alpha mode
+Currently in beta mode
 
 Docker image is located at https://hub.docker.com/r/nonbinary/librenews/
 
 Usage:
 
-Edit the config.json file according to instructions from librenews: https://github.com/milesmcc/LibreNews-Server#3-librenews-server-operator-documentation
-Currently the image uses an external Mongodb image, address supplied with environment variables.
-Below is a sample docker-compose setup:
+Start image, preferrably setting a volume at /code.  
+Edit the `/code/src/config.json` file according to instructions from
+librenews: https://github.com/milesmcc/LibreNews-Server#3-librenews-server-operator-documentation
 
-    version '3'
-    services:
-        librenews:
-            image: nonbinary/librenews
-            volumes:
-                - librenews:/code
-            ports:
-                - 8888:8888
-            environment:
-                - MONGODB_HOST=mongo-server
-                - MONGODB_PORT=27017
-            networks:
-                - mongodb
-        mongodb:
-            image: mongo:latest
-            container_name: mongo-server
-            networks:
-                - mongodb
+API keys can be set using the following environment variables:
+
+    TWITTER_ACCESS_TOKEN
+    TWITTER_ACCESS_TOKEN_SECRET
+    TWITTER_CONSUMER_KEY
+    TWITTER_CONSUMER_SECRET
+    VAPID_PRIVATE_KEY
+    VAPID_PUBLIC_KEY
+
+Twitter API keys needs to be fetched from https://apps.twitter.com   
+Vapid keys needs to be created, but information on that process needs to be found using search engines etc.
+
+After this information has been supplied, accounts needs to be added to `/code/src/config.json`, and the image
+needs to be restarted with the new information.
